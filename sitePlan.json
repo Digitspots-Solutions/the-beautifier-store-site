@@ -1,0 +1,42 @@
+{
+  "businessName": "The Beautifier Store",
+  "industry": "Fashion and Creative Design",
+  "tone": "warm and stylish",
+  "tagline": "Where Style Meets Artistry",
+  "sections": [
+    {
+      "id": "hero",
+      "name": "Hero",
+      "copy": "Welcome to The Beautifier Store - Your Premier Destination for Fashion and Creative Design in Abeokuta. Discover unique pieces that express your individuality and elevate your style. From stunning fashion collections to bespoke creative designs, we bring your vision to life.",
+      "imagePrompt": "Photorealistic image of a vibrant Nigerian fashion boutique interior with colorful traditional and contemporary fabrics, elegant clothing displays, warm golden lighting, African print materials artistically arranged, modern minimalist shelving with fashion accessories, and subtle adire textile patterns in the background, shot from an inviting entrance perspective",
+      "layout": "centered"
+    },
+    {
+      "id": "about",
+      "name": "About Us",
+      "copy": "At The Beautifier Store, we are passionate about celebrating African creativity and individual expression through fashion. Located in the heart of Itoku Market, Abeokuta - a historic hub of textile excellence - we blend traditional craftsmanship with contemporary design. Our team of skilled designers and fashion enthusiasts curates and creates pieces that tell your unique story. Whether you're looking for everyday elegance, special occasion attire, or custom creative designs, we're here to beautify your world.",
+      "imagePrompt": "Warm and inviting Nigerian fashion studio scene showing skilled artisans working with colorful fabrics, traditional adire textiles hanging in background, sewing machines, design sketches on walls, natural lighting streaming through windows, African fashion designer consulting with client, authentic Abeokuta marketplace atmosphere with creative energy",
+      "layout": "split"
+    },
+    {
+      "id": "services",
+      "name": "Our Services",
+      "copy": "**Fashion Collections** - Curated selection of ready-to-wear pieces featuring contemporary African designs, casual wear, corporate attire, and statement pieces that turn heads.\n\n**Custom Design & Tailoring** - Bring your vision to life with our bespoke design service. From concept to creation, we craft garments perfectly tailored to your measurements and style preferences.\n\n**Creative Design Solutions** - Beyond fashion, we offer creative design services including fabric customization, accessory design, and styling consultations to complete your look.\n\n**Adire & Traditional Fabrics** - Authentic adire pieces and traditional Nigerian textiles sourced from our location at the famous Itoku Market, honoring our heritage while embracing modern aesthetics.\n\n**Personal Styling** - Expert guidance to help you discover your signature style and build a wardrobe that reflects your personality and lifestyle.",
+      "imagePrompt": "Professional grid layout showing five distinct scenes: 1) elegant African print dresses on mannequins, 2) tailor measuring client with tape measure and fabric samples, 3) creative workspace with design materials and accessories, 4) beautiful traditional adire fabrics in blue and white patterns, 5) fashion consultant styling a happy Nigerian client, all with warm natural lighting and sophisticated Nigerian fashion boutique aesthetic",
+      "layout": "cards"
+    },
+    {
+      "id": "contact",
+      "name": "Visit Us",
+      "copy": "Ready to elevate your style? Visit The Beautifier Store today or get in touch to discuss your fashion needs. We're conveniently located behind Adire Mall in the renowned Itoku Market, Abeokuta - the heart of Ogun State's textile heritage.\n\n**Address:** Behind Adire Mall, Itoku Market, Abeokuta, Ogun State, Nigeria\n\n**Phone:** +234 810 783 4493\n\n**Location:** Odeda, Ogun State\n\n**Opening Hours:** Monday - Saturday, 9:00 AM - 6:00 PM\n\nClick the button below to chat with us on WhatsApp for quick inquiries, style consultations, or to book an appointment. We look forward to beautifying your wardrobe!",
+      "imagePrompt": "Professional storefront photograph of a Nigerian fashion boutique with welcoming entrance, visible 'The Beautifier Store' signage, traditional Itoku Market architectural elements, colorful fabric displays visible through windows, customers entering, warm afternoon sunlight, authentic Abeokuta street scene with market atmosphere, inviting and accessible appearance",
+      "layout": "centered"
+    }
+  ],
+  "contact": {
+    "phone": "+234 810 783 4493",
+    "email": "",
+    "address": "Behind Adire Mall, Itoku Market, Abeokuta, Ogun State, Nigeria",
+    "whatsapp": "https://wa.me/2348107834493"
+  }
+}
