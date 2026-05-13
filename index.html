@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Beautifier Store - Where Style Meets Artistry</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Manrope:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-primary: #0b0b0b;
+            --color-accent: #001fe3;
+            --color-bg: #F5F5F5;
+            --color-text: #080808;
+            --color-surface: #e8e8e8;
+            --color-secondary-accent: #f8276a;
+            --font-display: 'Syne', sans-serif;
+            --font-body: 'Manrope', sans-serif;
+            --border-radius: 6px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--color-text);
+            background-color: var(--color-bg);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-display);
+            font-weight: 800;
+            line-height: 1.2;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(24px);
+            }
+            to {
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            background: rgba(245, 245, 245, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        nav .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--color-primary);
+            text-decoration: none;
+        }
+
+        nav .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav .nav-links a {
+            text-decoration: none;
+            color: var(--color-text);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav .nav-links a:hover {
+            color: var(--color-accent);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 4px;
+        }
+
+        .mobile-menu-btn span {
+            width: 25px;
+            height: 3px;
+            background: var(--color-text);
+            transition: all 0.3s ease;
+            transform-origin: center;
+        }
+
+        .mobile-menu-btn.active span:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .mobile-menu-btn.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-btn.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 70px;
+            right: -100%;
+            width: 300px;
+            height: calc(100vh - 70px);
+            background: var(--color-bg);
+            box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+            transition: right 0.3s ease;
+            z-index: 999;
+            padding: 2rem;
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+        }
+
+        .mobile-menu ul li {
+            margin-bottom: 1.5rem;
+        }
+
+        .mobile-menu ul a {
+            text-decoration: none;
+            color: var(--color-text);
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            display: block;
+            padding: 0.5rem 0;
+        }
+
+        .mobile-menu ul a:hover {
+            color: var(--color-accent);
+        }
+
+        /* Hero Section */
+        #hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            overflow: hidden;
+            animation: fadeUp 0.6s ease forwards;
+        }
+
+        #hero .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+        }
+
+        #hero .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.55);
+            z-index: 2;
+        }
+
+        #hero .hero-content {
+            position: relative;
+            z-index: 3;
+            max-width: 900px;
+            padding: 2rem;
+        }
+
+        #hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        #hero .tagline {
+            font-size: 1.5rem;
+            font-family: var(--font-display);
+            margin-bottom: 1.5rem;
+            color: var(--color-secondary-accent);
+        }
+
+        #hero p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--color-accent);
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: var(--border-radius);
+            transition: all 0.3s ease;
+            box-shadow: 4px 4px 0 var(--color-secondary-accent);
+        }
+
+        .cta-button:hover {
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0 var(--color-secondary-accent);
+        }
+
+        /* About Section */
+        #about {
+            padding: 80px 2rem;
+            animation: fadeUp 0.6s ease forwards;
+            animation-delay: 0.1s;
+        }
+
+        #about .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        #about img {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+            border-radius: var(--border-radius);
+            box-shadow: 8px 8px 0 var(--color-surface);
+        }
+
+        #about .content h2 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--color-primary);
+        }
+
+        #about .content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        /* Services Section */
+        #services {
+            padding: 80px 2rem;
+            background: white;
+            animation: fadeUp 0.6s ease forwards;
+            animation-delay: 0.2s;
+        }
+
+        #services .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        #services h2 {
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: var(--color-primary);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--color-bg);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: 4px 4px 0 var(--color-surface);
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0 var(--color-surface);
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--color-accent);
+        }
+
+        .service-card p {
+            line-height: 1.7;
+        }
+
+        /* Contact Section */
+        #contact {
+            padding: 80px 2rem;
+            animation: fadeUp 0.6s ease forwards;
+            animation-delay: 0.3s;
+        }
+
+        #contact .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        #contact h2 {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            color: var(--color-primary);
+        }
+
+        #contact .contact-content {
+            background: white;
+            padding: 3rem;
+            border-radius: var(--border-radius);
+            box-shadow: 8px 8px 0 var(--color-surface);
+            margin-bottom: 2rem;
+        }
+
+        #contact p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info {
+            margin: 2rem 0;
+            text-align: left;
+        }
+
+        .contact-info p {
+            font-size: 1rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .contact-info strong {
+            font-weight: 700;
+            color: var(--color-primary);
+        }
+
+        .contact-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .contact-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--color-primary);
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: var(--border-radius);
+            transition: all 0.3s ease;
+            box-shadow: 4px 4px 0 var(--color-accent);
+        }
+
+        .contact-button:hover {
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0 var(--color-accent);
+        }
+
+        .contact-button.whatsapp {
+            background: #25D366;
+            box-shadow: 4px 4px 0 var(--color-primary);
+        }
+
+        .contact-button.whatsapp:hover {
+            box-shadow: 2px 2px 0 var(--color-primary);
+        }
+
+        /* WhatsApp Floating Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            z-index: 999;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--color-primary);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            animation: fadeUp 0.6s ease forwards;
+            animation-delay: 0.4s;
+        }
+
+        footer p {
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            #hero h1 {
+                font-size: 3rem;
+            }
+
+            #about .container {
+                gap: 3rem;
+            }
+
+            #about img {
+                height: 500px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: flex;
+            }
+
+            #hero {
+                height: 100vh;
+            }
+
+            #hero h1 {
+                font-size: 2.5rem;
+            }
+
+            #hero .tagline {
+                font-size: 1.2rem;
+            }
+
+            #hero p {
+                font-size: 1rem;
+            }
+
+            #about {
+                padding: 48px 1rem;
+            }
+
+            #about .container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            #about img {
+                height: 400px;
+            }
+
+            #about .content h2,
+            #services h2,
+            #contact h2 {
+                font-size: 2rem;
+            }
+
+            #services,
+            #contact {
+                padding: 48px 1rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            #contact .contact-content {
+                padding: 2rem 1.5rem;
+            }
+
+            .contact-buttons {
+                flex-direction: column;
+            }
+
+            .contact-button {
+                width: 100%;
+            }
+
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="#" class="logo">THE BEAUTIFIER</a>
+            <ul class="nav-links">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="mobile-menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="mobile-menu">
+        <ul>
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </div>
+
+    <section id="hero">
+        <img src="https://images.pexels.com/photos/32258508/pexels-photo-32258508.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="The Beautifier Store" class="hero-bg">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>The Beautifier Store</h1>
+            <p class="tagline">Where Style Meets Artistry</p>
+            <p>Welcome to The Beautifier Store - Your Premier Destination for Fashion and Creative Design in Abeokuta. Discover unique pieces that express your individuality and elevate your style. From stunning fashion collections to bespoke creative designs, we bring your vision to life.</p>
+            <a href="#contact" class="cta-button">GET IN TOUCH</a>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <img src="https://images.pexels.com/photos/35073804/pexels-photo-35073804.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="About The Beautifier Store">
+            <div class="content">
+                <h2>About Us</h2>
+                <p>At The Beautifier Store, we are passionate about celebrating African creativity and individual expression through fashion. Located in the heart of Itoku Market, Abeokuta - a historic hub of textile excellence - we blend traditional craftsmanship with contemporary design. Our team of skilled designers and fashion enthusiasts curates and creates pieces that tell your unique story. Whether you're looking for everyday elegance, special occasion attire, or custom creative designs, we're here to beautify your world.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="services">
+        <div class="container">
+            <h2>Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Fashion Collections</h3>
+                    <p>Curated selection of ready-to-wear pieces featuring contemporary African designs, casual wear, corporate attire, and statement pieces that turn heads.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Custom Design & Tailoring</h3>
+                    <p>Bring your vision to life with our bespoke design service. From concept to creation, we craft garments perfectly tailored to your measurements and style preferences.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Creative Design Solutions</h3>
+                    <p>Beyond fashion, we offer creative design services including fabric customization, accessory design, and styling consultations to complete your look.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Adire & Traditional Fabrics</h3>
+                    <p>Authentic adire pieces and traditional Nigerian textiles sourced from our location at the famous Itoku Market, honoring our heritage while embracing modern aesthetics.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Personal Styling</h3>
+                    <p>Expert guidance to help you discover your signature style and build a wardrobe that reflects your personality and lifestyle.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2>Visit Us</h2>
+            <div class="contact-content">
+                <p>Ready to elevate your style? Visit The Beautifier Store today or get in touch to discuss your fashion needs. We're conveniently located behind Adire Mall in the renowned Itoku Market, Abeokuta - the heart of Ogun State's textile heritage.</p>
+                
+                <div class="contact-info">
+                    <p><strong>Address:</strong> Behind Adire Mall, Itoku Market, Abeokuta, Ogun State, Nigeria</p>
+                    <p><strong>Phone:</strong> +234 810 783 4493</p>
+                    <p><strong>Location:</strong> Odeda, Ogun State</p>
+                    <p><strong>Opening Hours:</strong> Monday - Saturday, 9:00 AM - 6:00 PM</p>
+                </div>
+
+                <p>Click the button below to chat with us on WhatsApp for quick inquiries, style consultations, or to book an appointment. We look forward to beautifying your wardrobe!</p>
+
+                <div class="contact-buttons">
+                    <a href="tel:+2348107834493" class="contact-button">CALL US</a>
+                    <a href="https://wa.me/2348107834493" class="contact-button whatsapp" target="_blank">WHATSAPP US</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 The Beautifier Store. All rights reserved.</p>
+    </footer>
+
+    <a href="https://wa.me/2348107834493" class="whatsapp-float" target="_blank">
+        <svg viewBox="0 0 32 32" fill="white" width="30" height="30">
+            <path d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.737 5.607 2.137 8.048l-2.137 7.952 7.933-2.127c2.42 1.37 5.173 2.127 8.067 2.127 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.467c-2.482 0-4.908-0.646-7.07-1.87l-0.507-0.292-5.253 1.408 1.409-5.235-0.322-0.532c-1.342-2.22-2.051-4.772-2.051-7.413 0-7.72 6.28-14 14-14s14 6.28 14 14-6.28 14-14 14zM21.803 18.97c-0.302-0.15-1.78-0.878-2.057-0.978-0.277-0.1-0.478-0.15-0.68 0.15s-0.78 0.978-0.957 1.178c-0.177 0.2-0.353 0.224-0.655 0.075s-1.278-0.472-2.435-1.502c-0.9-0.803-1.508-1.795-1.685-2.097s-0.020-0.462 0.132-0.612c0.135-0.133 0.302-0.347 0.453-0.52 0.15-0.174 0.2-0.298 0.302-0.497 0.1-0.2 0.050-0.374-0.025-0.524s-0.68-1.64-0.932-2.246c-0.245-0.59-0.495-0.51-0.68-0.52-0.175-0.008-0.377-0.010-0.578-0.010s-0.528 0.075-0.805 0.374c-0.277 0.298-1.057 1.033-1.057 2.52s1.082 2.922 1.232 3.122c0.15 0.2 2.13 3.257 5.158 4.565 0.72 0.31 1.283 0.495 1.722 0.634 0.725 0.23 1.385 0.197 1.907 0.12 0.582-0.087 1.78-0.728 2.032-1.43s0.252-1.304 0.177-1.43c-0.075-0.125-0.277-0.2-0.578-0.349z"/>
+        </svg>
+    </a>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const mobileMenu = document.querySelector('.mobile-menu');
+
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenuBtn.classList.toggle('active');
+                mobileMenu.classList.toggle('active');
+            });
+
+            // Close mobile menu when clicking a link
+            const mobileLinks = mobileMenu.querySelectorAll('a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenuBtn.classList.remove('active');
+                    mobileMenu.classList.remove('active');
+                });
+            });
+        }
+    </script>
+</body>
+</html>
